@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assassin And the Lost Treasure</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+      background-color: black;
+      color: white;
+      font-family: 'Cinzel', serif;
+    }
+
+    .splash-container {
+      height: 100vh;
+      width: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('https://source.unsplash.com/1920x1080/?treasure,ruins,fantasy');
+      background-size: 110%;
+      background-position: center;
+      animation: kenBurnsEffect 25s infinite linear;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      position: relative;
+      padding-top: 50px;
+    }
+
+    /* Title at top */
+    .game-title {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transform: translateY(-40px);
+      transition: opacity 2s ease-out, transform 2s ease-out;
+      margin-bottom: 30px;
+    }
+
+    .game-title.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero image (clickable + hover animation) */
+    .hero-image {
+      width: 75%;
+      max-width: 1200px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 2s ease, transform 2s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .hero-image.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+    }
+
+    /* Bottom gallery */
+    .bottom-section {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .image-gallery {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 2s ease, transform 2s ease;
+      margin-bottom: 20px;
+    }
+
+    .image-gallery.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-gallery img {
+      width: 160px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Project source link */
+    .project-link {
+      font-size: 1rem;
+      color: #00bfff;
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    .project-link.visible {
+      opacity: 1;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+      color: #66d9ff;
+    }
+
+    @keyframes kenBurnsEffect {
+      0% { background-size: 110%; background-position: center; }
+      50% { background-size: 120%; background-position: top left; }
+      100% { background-size: 110%; background-position: center; }
+    }
+
+    @media (max-width: 768px) {
+      .game-title {
+        font-size: 2rem;
+      }
+
+      .hero-image {
+        width: 90%;
+      }
+
+      .image-gallery img {
+        width: 120px;
+        height: 80px;
+      }
+
+      .bottom-section {
+        bottom: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="splash-container">
+    <!-- Title at top -->
+    <h1 class="game-title">Assassin And the Lost Treasure</h1>
+
+    <!-- Hero image clickable -->
+    <img src="C:\Users\user\Desktop\maddie_portfolio\images\m1.png" 
+         alt="Hero Scene" class="hero-image" id="heroImage" />
+
+    <!-- Bottom section (gallery + link) -->
+    <div class="bottom-section">
+      <div class="image-gallery">
+        <img src="\Users\user\Desktop\maddie_portfolio\images\im1.png" alt="Image 1">
+        <img src="\Users\user\Desktop\maddie_portfolio\images\im2.png" alt="Image 2">
+        <img src="\Users\user\Desktop\maddie_portfolio\images\im3.png" alt="Image 3">
+        <img src="\Users\user\Desktop\maddie_portfolio\images\go.png" alt="Image 4">
+        <img src="\Users\user\Desktop\maddie_portfolio\images\v.png" alt="Image 5">
+      </div>
+
+      <!-- Project Source Link -->
+      <a href="https://github.com/maddie240803/assassin-and-the-lost-treasure-game-project" target="_blank" class="project-link">🔗 View Project Source</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const title = document.querySelector('.game-title');
+      const hero = document.querySelector('.hero-image');
+      const gallery = document.querySelector('.image-gallery');
+      const link = document.querySelector('.project-link');
+
+      // Step 1: Show title
+      setTimeout(() => title.classList.add('visible'), 500);
+
+      // Step 2: Show hero image
+      setTimeout(() => hero.classList.add('visible'), 2000);
+
+      // Step 3: Show gallery
+      setTimeout(() => gallery.classList.add('visible'), 3500);
+
+      // Step 4: Show link
+      setTimeout(() => link.classList.add('visible'), 5000);
+
+      // Click event → open YouTube trailer
+      hero.addEventListener('click', () => {
+        window.open('https://www.youtube.com/watch?v=nDB9thNq4ig', '_blank');
+      });
+    });
+  </script>
+
+</body>
+</html>
