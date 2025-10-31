@@ -1,205 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Assassin And the Lost Treasure</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg-top:#0b0f1f;
+      --bg-bot:#040814;
+      --text:#ffffff;
+      --muted:#cbd5e1;
+      --shadow:rgba(0,0,0,.7);
     }
 
+    * { box-sizing:border-box; margin:0; padding:0; }
     body {
-      overflow: hidden;
-      background-color: black;
-      color: white;
-      font-family: 'Cinzel', serif;
+      font-family:"Poppins",sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg-top) 0%,var(--bg-bot) 100%);
     }
 
-    .splash-container {
-      height: 100vh;
-      width: 100%;
-      background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('https://source.unsplash.com/1920x1080/?treasure,ruins,fantasy');
-      background-size: 110%;
-      background-position: center;
-      animation: kenBurnsEffect 25s infinite linear;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      text-align: center;
-      position: relative;
-      padding-top: 50px;
+    .page {
+      min-height:100vh;
+      padding:40px 20px 56px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:28px;
     }
 
-    .game-title {
-      font-size: 3rem;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-      opacity: 0;
-      transform: translateY(-40px);
-      transition: opacity 2s ease-out, transform 2s ease-out;
-      margin-bottom: 30px;
+    /* Title */
+    h1 {
+      font-size:clamp(28px,4vw,40px);
+      font-weight:800;
+      letter-spacing:.3px;
+      line-height:1.15;
+      color:var(--text);
+      text-shadow:0 2px 6px rgba(0,0,0,.6);
+      opacity:0;
+      animation:fadeDown 1s ease forwards;
     }
 
-    .game-title.visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* Hero */
+    .hero {
+      width:100%;
+      max-width:1200px;
+      height:460px;
+      border-radius:18px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 14px 36px var(--shadow);
+      transition:transform .35s, box-shadow .35s;
+      opacity:0;
+      animation:fadeUp 1s ease forwards .4s;
     }
 
-    .hero-image {
-      width: 75%;
-      max-width: 1200px;
-      border-radius: 25px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-      opacity: 0;
-      transform: translateY(60px);
-      transition: opacity 2s ease, transform 2s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+    .hero:hover {
+      transform:translateY(-4px) scale(1.01);
+      box-shadow:0 26px 56px var(--shadow);
     }
 
-    .hero-image.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .hero .overlay {
+      position:absolute; inset:auto 0 0 0;
+      padding:18px 22px;
+      display:flex; justify-content:center; align-items:center;
+      background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,0) 100%);
+      font-weight:700; font-size:clamp(16px,2.2vw,22px);
+      color:var(--text);
+      text-shadow:0 2px 6px rgba(0,0,0,.6);
     }
 
-    .hero-image:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+    /* Grid */
+    .grid {
+      width:100%;
+      max-width:1200px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:22px;
     }
 
-    .bottom-section {
-      position: absolute;
-      bottom: 30px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .image-card {
+      position:relative;
+      min-height:220px;
+      border-radius:14px;
+      background-size:cover;
+      background-position:center;
+      overflow:hidden;
+      box-shadow:0 10px 24px var(--shadow);
+      transition:transform .3s, box-shadow .3s, filter .3s;
+      outline:none;
+      opacity:0;
+      transform:translateY(30px);
+      animation:fadeUp 1s ease forwards;
     }
 
-    .image-gallery {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 2s ease, transform 2s ease;
-      margin-bottom: 20px;
+    .image-card:nth-child(1){animation-delay:.6s;}
+    .image-card:nth-child(2){animation-delay:.8s;}
+    .image-card:nth-child(3){animation-delay:1s;}
+    .image-card:nth-child(4){animation-delay:1.2s;}
+    .image-card:nth-child(5){animation-delay:1.4s;}
+
+    .image-card:hover {
+      transform:translateY(-4px) scale(1.05);
+      box-shadow:0 18px 40px var(--shadow);
+      filter:saturate(1.06) brightness(1.03);
     }
 
-    .image-gallery.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .image-card:focus { outline:3px solid rgba(255,255,255,.35); }
+
+    .badge {
+      position:absolute; left:12px; bottom:12px;
+      background:rgba(0,0,0,.65);
+      color:var(--text);
+      padding:6px 12px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:13px;
+      text-shadow:0 1px 3px rgba(0,0,0,.6);
     }
 
-    .image-gallery img {
-      width: 160px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
-      transform: scale(0.95);
-      transition: transform 0.3s ease;
+    .source-link {
+      color:#00bfff;
+      font-weight:600;
+      margin-top:30px;
+      text-decoration:none;
+      transition:color .3s;
+      opacity:0;
+      animation:fadeUp 1s ease forwards 1.6s;
     }
 
-    .image-gallery img:hover {
-      transform: scale(1.05);
+    .source-link:hover { color:#66d9ff; }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(40px); }
+      to { opacity:1; transform:translateY(0); }
     }
-
-    .project-link {
-      font-size: 1rem;
-      color: #00bfff;
-      text-decoration: none;
-      opacity: 0;
-      transition: opacity 1.5s ease;
-    }
-
-    .project-link.visible {
-      opacity: 1;
-    }
-
-    .project-link:hover {
-      text-decoration: underline;
-      color: #66d9ff;
-    }
-
-    @keyframes kenBurnsEffect {
-      0% { background-size: 110%; background-position: center; }
-      50% { background-size: 120%; background-position: top left; }
-      100% { background-size: 110%; background-position: center; }
-    }
-
-    @media (max-width: 768px) {
-      .game-title {
-        font-size: 2rem;
-      }
-
-      .hero-image {
-        width: 90%;
-      }
-
-      .image-gallery img {
-        width: 120px;
-        height: 80px;
-      }
-
-      .bottom-section {
-        bottom: 15px;
-      }
+    @keyframes fadeDown {
+      from { opacity:0; transform:translateY(-40px); }
+      to { opacity:1; transform:translateY(0); }
     }
   </style>
 </head>
 <body>
+  <div class="page">
+    <h1>Assassin And the Lost Treasure</h1>
 
-  <div class="splash-container">
-    <!-- Title -->
-    <h1 class="game-title">Assassin And the Lost Treasure</h1>
+    <!-- Hero (main image links to YouTube) -->
+    <a href="https://www.youtube.com/watch?v=nDB9thNq4ig" target="_blank" class="hero" aria-label="Watch Assassin game trailer on YouTube"
+       style="background-image:url('images/m1.png');">
+      <div class="overlay">🎮 Watch Assassin Trailer on YouTube</div>
+    </a>
 
-    <!-- Hero image -->
-    <img src="images/m1.png" 
-         alt="Hero Scene" class="hero-image" id="heroImage" />
-
-    <!-- Bottom section -->
-    <div class="bottom-section">
-      <div class="image-gallery">
-        <img src="images/m1.png" alt="Image 1">
-        <img src="images/im2.png" alt="Image 2">
-        <img src="images/im3.png" alt="Image 3">
-        <img src="images/go.png" alt="Image 4">
-        <img src="images/v.png" alt="Image 5">
+    <!-- Grid of game images -->
+    <div class="grid" role="list">
+      <div class="image-card" role="listitem" tabindex="0" style="background-image:url('images/m1.png');">
+        <div class="badge">Scene 1</div>
       </div>
-
-      <a href="https://github.com/maddie240803/assassin-and-the-lost-treasure-game-project" target="_blank" class="project-link">🔗 View Project Source</a>
+      <div class="image-card" role="listitem" tabindex="0" style="background-image:url('images/im2.png');">
+        <div class="badge">Scene 2</div>
+      </div>
+      <div class="image-card" role="listitem" tabindex="0" style="background-image:url('images/im3.png');">
+        <div class="badge">Scene 3</div>
+      </div>
+      <div class="image-card" role="listitem" tabindex="0" style="background-image:url('images/go.png');">
+        <div class="badge">Scene 4</div>
+      </div>
+      <div class="image-card" role="listitem" tabindex="0" style="background-image:url('images/v.png');">
+        <div class="badge">Scene 5</div>
+      </div>
     </div>
+
+    <!-- Project Source -->
+    <a href="https://github.com/maddie240803/assassin-and-the-lost-treasure-game-project" target="_blank" class="source-link">🔗 View Project Source</a>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const title = document.querySelector('.game-title');
-      const hero = document.querySelector('.hero-image');
-      const gallery = document.querySelector('.image-gallery');
-      const link = document.querySelector('.project-link');
-
-      setTimeout(() => title.classList.add('visible'), 500);
-      setTimeout(() => hero.classList.add('visible'), 2000);
-      setTimeout(() => gallery.classList.add('visible'), 3500);
-      setTimeout(() => link.classList.add('visible'), 5000);
-
-      hero.addEventListener('click', () => {
-        window.open('https://www.youtube.com/watch?v=nDB9thNq4ig', '_blank');
-      });
-    });
-  </script>
-
 </body>
 </html>
