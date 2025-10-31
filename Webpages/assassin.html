@@ -41,7 +41,6 @@
       padding-top: 50px;
     }
 
-    /* Title at top */
     .game-title {
       font-size: 3rem;
       letter-spacing: 2px;
@@ -57,7 +56,6 @@
       transform: translateY(0);
     }
 
-    /* Hero image (clickable + hover animation) */
     .hero-image {
       width: 75%;
       max-width: 1200px;
@@ -79,7 +77,6 @@
       box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
     }
 
-    /* Bottom gallery */
     .bottom-section {
       position: absolute;
       bottom: 30px;
@@ -119,7 +116,6 @@
       transform: scale(1.05);
     }
 
-    /* Project source link */
     .project-link {
       font-size: 1rem;
       color: #00bfff;
@@ -166,24 +162,23 @@
 <body>
 
   <div class="splash-container">
-    <!-- Title at top -->
+    <!-- Title -->
     <h1 class="game-title">Assassin And the Lost Treasure</h1>
 
-    <!-- Hero image clickable -->
-    <img src="images\m1.png" 
+    <!-- Hero image -->
+    <img src="images/m1.png" 
          alt="Hero Scene" class="hero-image" id="heroImage" />
 
-    <!-- Bottom section (gallery + link) -->
+    <!-- Bottom section -->
     <div class="bottom-section">
       <div class="image-gallery">
-        <img src="images\m1.png" alt="Image 1">
-        <img src="images\im2.png" alt="Image 2">
-        <img src="images\im3.png" alt="Image 3">
-        <img src="images\go.png" alt="Image 4">
-        <img src=images\v.png" alt="Image 5">
+        <img src="images/m1.png" alt="Image 1">
+        <img src="images/im2.png" alt="Image 2">
+        <img src="images/im3.png" alt="Image 3">
+        <img src="images/go.png" alt="Image 4">
+        <img src="images/v.png" alt="Image 5">
       </div>
 
-      <!-- Project Source Link -->
       <a href="https://github.com/maddie240803/assassin-and-the-lost-treasure-game-project" target="_blank" class="project-link">🔗 View Project Source</a>
     </div>
   </div>
@@ -195,19 +190,11 @@
       const gallery = document.querySelector('.image-gallery');
       const link = document.querySelector('.project-link');
 
-      // Step 1: Show title
       setTimeout(() => title.classList.add('visible'), 500);
-
-      // Step 2: Show hero image
       setTimeout(() => hero.classList.add('visible'), 2000);
-
-      // Step 3: Show gallery
       setTimeout(() => gallery.classList.add('visible'), 3500);
-
-      // Step 4: Show link
       setTimeout(() => link.classList.add('visible'), 5000);
 
-      // Click event → open YouTube trailer
       hero.addEventListener('click', () => {
         window.open('https://www.youtube.com/watch?v=nDB9thNq4ig', '_blank');
       });
@@ -216,8 +203,3 @@
 
 </body>
 </html>
-
-
-
-
-
