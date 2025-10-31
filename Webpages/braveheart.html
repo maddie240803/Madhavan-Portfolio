@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MY Game</title>
+  <title>Brave Heart - A 2D Adventure Game in Godot</title>
 
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
   /* =========================================================
-     Design tokens
+      Design tokens (Original)
   ========================================================== */
   :root{
     color-scheme: dark;
@@ -69,6 +68,91 @@
     opacity:0;
     animation:fadeDown 800ms ease forwards;
   }
+
+  /* =========================================================
+      NEW STYLES START
+  ========================================================== */
+  
+  /* New Subtitle / Hook */
+  .subtitle {
+    font-size: clamp(17px, 2.2vw, 22px);
+    color: var(--muted);
+    max-width: 750px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeDown 800ms ease forwards 80ms;
+    margin-top: -10px; /* Pulls it closer to the title */
+  }
+  
+  /* New Section Headings */
+  h2 {
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 700;
+    color: var(--text);
+    text-shadow: 0 2px 6px rgba(0,0,0,.6);
+    opacity: 0;
+    animation: fadeUp 800ms ease forwards 200ms;
+    margin-top: var(--space-3);
+    width: 100%;
+    max-width: 1200px;
+    text-align: left;
+  }
+
+  /* New Features Section */
+  .features-grid {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-3);
+    text-align: left;
+    opacity: 0;
+    animation: fadeUp 800ms ease forwards 300ms;
+  }
+
+  .feature-card {
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    box-shadow: var(--elev-1);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--elev-2);
+  }
+
+  .feature-card strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  
+  .feature-card p {
+    color: var(--muted);
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+
+  /* New Footer */
+  footer {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--glass-strong);
+    width: 100%;
+    max-width: 1200px;
+    color: var(--muted);
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  /* =========================================================
+      NEW STYLES END
+  ========================================================== */
 
   /* Hero */
   .hero{
@@ -145,11 +229,12 @@
     isolation:isolate;
   }
 
-  .image-card:nth-child(1){animation-delay:.18s;}
-  .image-card:nth-child(2){animation-delay:.28s;}
-  .image-card:nth-child(3){animation-delay:.38s;}
-  .image-card:nth-child(4){animation-delay:.48s;}
-  .image-card:nth-child(5){animation-delay:.58s;}
+  /* Staggered animation delays for the grid */
+  .grid .image-card:nth-child(1){animation-delay:.40s;}
+  .grid .image-card:nth-child(2){animation-delay:.45s;}
+  .grid .image-card:nth-child(3){animation-delay:.50s;}
+  .grid .image-card:nth-child(4){animation-delay:.55s;}
+  .grid .image-card:nth-child(5){animation-delay:.60s;}
 
   .image-card:hover{
     transform:translateY(-4px) scale(1.04);
@@ -200,22 +285,26 @@
 
   /* Links Section */
   .links{
-    margin-top:40px;
+    /* Removed margin-top, as it's now controlled by the <h2> */
     display:flex;
     gap:20px;
     flex-wrap:wrap;
-    justify-content:center;
+    justify-content:flex-start; /* Aligned with <h2> */
+    width: 100%;
+    max-width: 1200px;
+    opacity: 0;
+    animation: fadeUp 800ms ease forwards 400ms;
   }
   .link-btn{
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
     color:#fff;
     text-decoration:none;
-    padding:12px 12px;
+    padding:12px 24px; /* Increased padding for a stronger CTA */
     border-radius:8px;
     font-weight:600;
     transition:transform .25s, box-shadow .25s;
     box-shadow:0 6px 16px var(--shadow);
-	align-items:center;
+    align-items:center;
   }
   .link-btn:hover{
     transform:translateY(-3px);
@@ -240,50 +329,84 @@
     .page{ padding:24px var(--space-2) 48px; gap:20px; }
     .grid{ gap:16px; }
     .badge{ left:10px; bottom:10px; padding:5px 10px; font-size:12px; }
+    /* Ensure new headings are centered on mobile */
+    h2 { text-align: center; }
+    .links { justify-content: center; }
   }
   </style>
 </head>
 <body>
   <div class="page">
+    
     <h1>Brave Heart 2D Game — Godot Engine</h1>
+    
+    <p class="subtitle">
+      Dive into a captivating 2D adventure. Explore mystical lands, battle fearsome foes, 
+      and uncover the secrets of a brave heart in this feature-rich platformer.
+    </p>
 
-    <!-- Hero -->
-    <a href="https://youtu.be/8XDg8eMl5_o" target="_blank" class="hero" aria-label="Watch highway showcase on YouTube"
+    <a href="https://youtu.be/8XDg8eMl5_o" target="_blank" class="hero" 
+       aria-label="Watch the Brave Heart official gameplay trailer on YouTube"
        style="background-image:url('../images/main.png');">
-      <div class="overlay">Watch Gameplay on YouTube</div>
+      <div class="overlay">Watch the Official Trailer</div>
     </a>
 
-    <!-- Grid -->
-    <div class="grid" role="list">
-      <div class="image-card" role="listitem" tabindex="0" aria-label="Highway view 1"
-           style="background-image:url('../images/g1.png');">
-        <div class="badge">View 1</div>
+    <h2>Key Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <strong>Dynamic Combat</strong>
+        <p>Master fast-paced, responsive combat against a menagerie of unique enemies and challenging bosses.</p>
       </div>
-      <div class="image-card" role="listitem" tabindex="0" aria-label="Highway view 2"
-           style="background-image:url('../images/g2.png');">
-        <div class="badge">View 2</div>
+      <div class="feature-card">
+        <strong>Explore a Rich World</strong>
+        <p>Journey through vibrant, hand-crafted pixel-art environments, from enchanted forests to forgotten ruins.</p>
       </div>
-      <div class="image-card" role="listitem" tabindex="0" aria-label="Highway view 3"
-           style="background-image:url('../images/g3.png');">
-        <div class="badge">View 3</div>
+      <div class="feature-card">
+        <strong>Deep Narrative</strong>
+        <p>Unravel a compelling story of courage and discovery, meeting memorable characters along the way.</p>
       </div>
-      <div class="image-card" role="listitem" tabindex="0" aria-label="Highway view 4"
-           style="background-image:url('../images/g4.png');">
-        <div class="badge">View 4</div>
-      </div>
-      <div class="image-card" role="listitem" tabindex="0" aria-label="Highway view 5"
-           style="background-image:url('../images/g5.png');">
-        <div class="badge">View 5</div>
+      <div class="feature-card">
+        <strong>Powered by Godot</strong>
+        <p>Built from the ground up using the flexible and open-source Godot Engine 4, ensuring smooth performance.</p>
       </div>
     </div>
 
-    <!-- Links -->
+    <h2>Glimpses of the World</h2>
+    
+    <div class="grid" role="list">
+      <div class="image-card" role="listitem" tabindex="0" aria-label="A lush, green forest environment"
+           style="background-image:url('../images/g1.png');">
+        <div class="badge">Lush Environments</div>
+      </div>
+      <div class="image-card" role="listitem" tabindex="0" aria-label="Dark and mysterious caves"
+           style="background-image:url('../images/g2.png');">
+        <div class="badge">Mysterious Caves</div>
+      </div>
+      <div class="image-card" role="listitem" tabindex="0" aria-label="The hero fighting a skeleton enemy"
+           style="background-image:url('../images/g3.png');">
+        <div class="badge">Fearsome Foes</div>
+      </div>
+      <div class="image-card" role="listitem" tabindex="0" aria-label="A calm village or town hub"
+           style="background-image:url('../images/g4.png');">
+        <div class="badge">Discover Secrets</div>
+      </div>
+      <div class="image-card" role="listitem" tabindex="0" aria-label="An epic boss battle"
+           style="background-image:url('../images/g5.png');">
+        <div class="badge">Epic Boss Fights</div>
+      </div>
+    </div>
+
+    <h2>Ready for Adventure?</h2>
+    
     <div class="links">
       <a href="https://yourgame.com" target="_blank" class="link-btn">🎮 Play Game</a>
       <a href="https://github.com/maddie240803/Brave_heart_2D_game_Project" target="_blank" class="link-btn">📂 Project Source</a>
     </div>
+    
+    <footer>
+      <p>&copy; 2025 [Your Name / Studio Name Here]. All rights reserved.</p>
+    </footer>
+    
   </div>
 </body>
 </html>
-
-
