@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Assassin And the Lost Treasure</title>
 
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -16,7 +17,12 @@
       --shadow:rgba(0,0,0,.6);
     }
 
-    * {box-sizing:border-box; margin:0; padding:0;}
+    * {
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
     body {
       font-family:"Poppins",sans-serif;
       color:var(--text);
@@ -41,14 +47,14 @@
       animation:fadeDown 1s ease forwards;
     }
 
-    /* HERO */
+    /* HERO SECTION */
     .hero {
       width:100%;
       max-width:1200px;
       height:520px;
       border-radius:20px;
       background-size:cover;
-      background-position:center center;
+      background-position:center;
       box-shadow:0 20px 50px var(--shadow);
       position:relative;
       overflow:hidden;
@@ -70,9 +76,10 @@
       padding:20px;
       font-weight:600;
       font-size:clamp(18px,2.5vw,22px);
+      letter-spacing:0.5px;
     }
 
-    /* GRID */
+    /* IMAGE GRID */
     .grid {
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -88,7 +95,7 @@
       background-position:center;
       position:relative;
       box-shadow:0 10px 25px var(--shadow);
-      transition:transform .3s, box-shadow .3s;
+      transition:transform .3s, box-shadow .3s, filter .3s;
       opacity:0;
       animation:fadeUp 1s ease forwards;
     }
@@ -118,6 +125,7 @@
       backdrop-filter:blur(4px);
     }
 
+    /* SOURCE LINK */
     .source-link {
       color:var(--accent);
       font-weight:600;
@@ -127,12 +135,17 @@
       opacity:0;
       animation:fadeUp 1s ease forwards 1.6s;
     }
-    .source-link:hover {color:#66d9ff;}
 
+    .source-link:hover {
+      color:#66d9ff;
+    }
+
+    /* ANIMATIONS */
     @keyframes fadeUp {
       from {opacity:0; transform:translateY(40px);}
       to {opacity:1; transform:translateY(0);}
     }
+
     @keyframes fadeDown {
       from {opacity:0; transform:translateY(-40px);}
       to {opacity:1; transform:translateY(0);}
@@ -143,30 +156,34 @@
   <div class="page">
     <h1>Assassin And the Lost Treasure</h1>
 
+    <!-- HERO IMAGE -->
     <a href="https://www.youtube.com/watch?v=nDB9thNq4ig" target="_blank" class="hero"
-       style="background-image:url('images/m1.png');">
+       style="background-image:url('./images/m1.png');">
       <div class="overlay">🎮 Watch Assassin Trailer on YouTube</div>
     </a>
 
+    <!-- IMAGE GRID -->
     <div class="grid">
-      <div class="image-card" style="background-image:url('images/im1.png');">
+      <div class="image-card" style="background-image:url('./images/im1.png');">
         <div class="badge">Scene 1</div>
       </div>
-      <div class="image-card" style="background-image:url('images/im2.png');">
+      <div class="image-card" style="background-image:url('./images/im2.png');">
         <div class="badge">Scene 2</div>
       </div>
-      <div class="image-card" style="background-image:url('images/im3.png');">
+      <div class="image-card" style="background-image:url('./images/im3.png');">
         <div class="badge">Scene 3</div>
       </div>
-      <div class="image-card" style="background-image:url('images/go.png');">
+      <div class="image-card" style="background-image:url('./images/go.png');">
         <div class="badge">Scene 4</div>
       </div>
-      <div class="image-card" style="background-image:url('images/v.png');">
+      <div class="image-card" style="background-image:url('./images/v.png');">
         <div class="badge">Scene 5</div>
       </div>
     </div>
 
-    <a href="https://github.com/maddie240803/assassin-and-the-lost-treasure-game-project" target="_blank" class="source-link">🔗 View Project Source</a>
+    <!-- PROJECT SOURCE LINK -->
+    <a href="https://github.com/maddie240803/assassin-and-the-lost-treasure-game-project"
+       target="_blank" class="source-link">🔗 View Project Source</a>
   </div>
 </body>
 </html>
