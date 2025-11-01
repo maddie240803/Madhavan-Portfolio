@@ -1,10 +1,9 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Assasin And The Lost Treasure</title>
+  <title>Assassin And The Lost Treasure</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -27,7 +26,7 @@
 
     .page{
       min-height:100vh;
-      padding:50px 20px 80px;
+      padding:50px 20px 100px;
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -141,6 +140,29 @@
       backdrop-filter:blur(5px);
     }
 
+    /* SOURCE LINK */
+    .source-link{
+      display:inline-block;
+      margin-top:30px;
+      font-size:18px;
+      font-weight:600;
+      color:var(--accent);
+      text-decoration:none;
+      border:2px solid var(--accent);
+      padding:10px 26px;
+      border-radius:50px;
+      transition:all .3s ease;
+      box-shadow:0 0 15px rgba(0,191,255,.2);
+      opacity:0;
+      animation:fadeUp 1s ease forwards 1.6s;
+    }
+    .source-link:hover{
+      background:var(--accent);
+      color:#000;
+      box-shadow:0 0 25px rgba(0,191,255,.6);
+      transform:translateY(-3px);
+    }
+
     /* ✨ ANIMATIONS ✨ */
     @keyframes fadeUp{
       from{opacity:0; transform:translateY(40px);}
@@ -181,8 +203,12 @@
       <div class="image-card" style="background-image:url('../images/go.png');"><div class="badge">View 4</div></div>
       <div class="image-card" style="background-image:url('../images/v.png');"><div class="badge">View 5</div></div>
     </div>
+
+    <!-- 🔗 Project Source Link -->
+    <a href="https://github.com/maddie240803/assassin-and-the-lost-treasure-game-project" 
+       target="_blank" class="source-link">
+       🔗 View Project Source
+    </a>
   </div>
 </body>
 </html>
-
-
