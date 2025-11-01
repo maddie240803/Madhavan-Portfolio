@@ -1,249 +1,222 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Assassin And The Lost Treasure</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assassin and the Lost Treasure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg1:#020617;
-      --bg2:#0f172a;
-      --accent:#00bfff;
-      --text:#ffffff;
-      --shadow:rgba(0,0,0,.7);
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:"Poppins",sans-serif;
-      color:var(--text);
-      background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 100%);
-      overflow-x:hidden;
-    }
-
-    .page{
-      min-height:100vh;
-      padding:50px 20px 80px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:38px;
-      text-align:center;
-    }
-
-    /* ✨ TITLE ✨ */
-    h1{
-      font-size:clamp(28px,4.5vw,46px);
-      font-weight:800;
-      line-height:1.1;
-      background:linear-gradient(90deg,#00bfff,#5ee7ff,#00bfff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-size:200%;
-      animation:textGlow 5s linear infinite;
-      text-shadow:0 2px 12px rgba(0,191,255,.4);
-    }
-
-    /* HERO SECTION */
-    .hero{
-      width:100%;
-      max-width:1200px;
-      height:480px;
-      border-radius:22px;
-      background-size:cover;
-      background-position:center;
-      box-shadow:0 20px 50px var(--shadow);
-      overflow:hidden;
-      position:relative;
-      transition:transform .4s ease, box-shadow .4s ease;
-      /* UPDATED: Changed float animation timing for a subtler effect */
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .hero:hover{
-      transform:scale(1.03);
-      box-shadow:0 28px 70px rgba(0,191,255,.4);
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.8) 100%);
-    }
-
-    .hero .overlay{
-      position:absolute;
-      bottom:0; left:0; right:0;
-      padding:22px;
-      font-size:clamp(16px,2.5vw,22px);
-      font-weight:700;
-      color:#fff;
-      background:rgba(0,0,0,.35);
-      backdrop-filter:blur(8px);
-      text-shadow:0 2px 6px rgba(0,0,0,.6);
-      transition:background .3s;
-    }
-    .hero:hover .overlay{
-      background:rgba(0,191,255,.25);
-    }
-
-    /* GRID */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:26px;
-      width:100%;
-      max-width:1200px;
-    }
-
-    .image-card{
-      position:relative;
-      height:220px;
-      border-radius:16px;
-      background-size:cover;
-      background-position:center;
-      overflow:hidden;
-      box-shadow:0 10px 30px var(--shadow);
-      transition:transform .4s ease, box-shadow .4s ease, filter .4s ease;
-      /* NEW: Added subtle float animation */
-      animation: float 8s ease-in-out infinite;
-    }
-    
-    /* NEW: Staggered animation delays for a "breathing" effect */
-    .image-card:nth-child(1){animation-delay:.2s;}
-    .image-card:nth-child(2){animation-delay:.4s;}
-    .image-card:nth-child(3){animation-delay:.1s;}
-    .image-card:nth-child(4){animation-delay:.3s;}
-    .image-card:nth-child(5){animation-delay:.5s;}
-
-    .image-card:hover{
-      transform:translateY(-8px) scale(1.05);
-      filter:brightness(1.1) saturate(1.1);
-      box-shadow:0 18px 50px rgba(0,191,255,.3);
-      animation-play-state: paused; /* Pause float on hover */
-    }
-
-    .badge{
-      position:absolute;
-      left:12px; bottom:12px;
-      padding:6px 14px;
-      background:rgba(0,0,0,.6);
-      border:1px solid rgba(255,255,255,.15);
-      border-radius:999px;
-      font-size:13px;
-      font-weight:600;
-      color:#fff;
-      backdrop-filter:blur(5px);
-    }
-
-    /* NEW: Styled link as a button */
-    .source-link {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      padding: 12px 24px;
-      border: 2px solid var(--accent);
-      border-radius: 999px;
-      transition: all 0.3s ease;
-      text-shadow: 0 0 15px rgba(0,191,255,.5);
-    }
-    .source-link:hover {
-      background-color: var(--accent);
-      color: var(--bg1);
-      box-shadow: 0 0 25px rgba(0,191,255,.7);
-      transform: translateY(-3px);
-      text-shadow: none;
+  <style>
+    :root {
+      --bg1: #030617;
+      --bg2: #0a1128;
+      --accent: #00bfff;
+      --text: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.6);
     }
 
-    /* ✨ ANIMATIONS ✨ */
-    
-    /* NEW: CSS for the JavaScript scroll-reveal animation */
-    /* Hides elements initially */
-    .reveal {
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+      overflow-x: hidden;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 60px 20px;
+      gap: 50px;
+    }
+
+    /* Title */
+    h1 {
+      font-size: clamp(28px, 5vw, 50px);
+      font-weight: 800;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #00bfff, #4efcff, #00bfff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200%;
+      animation: glowText 6s linear infinite, fadeDown 1.2s ease forwards;
       opacity: 0;
+      text-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      max-width: 1200px;
+      height: 500px;
+      border-radius: 24px;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      box-shadow: 0 20px 40px var(--shadow);
+      position: relative;
+      transform: scale(0.95);
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.4s;
+    }
+
+    .hero:hover {
+      transform: scale(1);
+      box-shadow: 0 25px 80px rgba(0, 191, 255, 0.3);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
+    }
+
+    .hero .overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      font-weight: 700;
+      font-size: clamp(16px, 2.5vw, 22px);
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,.7);
+      transition: background 0.3s ease;
+    }
+
+    .hero:hover .overlay {
+      background: rgba(0,191,255,0.25);
+    }
+
+    /* Grid */
+    .grid {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .image-card {
+      height: 250px;
+      border-radius: 18px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px var(--shadow);
       transform: translateY(40px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
+      opacity: 0;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.4s ease;
     }
-    /* The 'is-visible' class is added by JavaScript */
-    .reveal.is-visible {
-      opacity: 1;
+
+    .image-card.visible {
       transform: translateY(0);
+      opacity: 1;
     }
-    /* Staggered transition delays for the visible items */
-    .reveal.is-visible:nth-child(1) { transition-delay: .1s; }
-    .reveal.is-visible:nth-child(2) { transition-delay: .2s; }
-    .reveal.is-visible:nth-child(3) { transition-delay: .3s; }
-    .reveal.is-visible:nth-child(4) { transition-delay: .4s; }
-    .reveal.is-visible:nth-child(5) { transition-delay: .5s; }
 
+    .image-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      filter: brightness(1.1) saturate(1.1);
+      box-shadow: 0 18px 60px rgba(0, 191, 255, 0.3);
+    }
 
-    @keyframes textGlow{
-      0%{background-position:0%;}
-      100%{background-position:200%;}
-    }
-    @keyframes float{
-      0%,100%{transform:translateY(0);}
-      /* UPDATED: Made float height smaller for a subtler effect */
-      50%{transform:translateY(-8px);}
-    }
+    .badge {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      backdrop-filter: blur(5px);
+    }
 
-    @media(max-width:600px){
-      .hero{height:300px;}
-      .image-card{height:180px;}
-    }
-  </style>
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glowText {
+      0% { background-position: 0%; }
+      100% { background-position: 200%; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero { height: 320px; }
+      .image-card { height: 200px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="page">
-        <h1 class="reveal">ASSASSIN AND THE LOST TREASURE</h1>
 
-        <a href="https://youtu.be/8XDg8eMl5_o" target="_blank" class="hero reveal"
-       style="background-image:url('../images/m1.png');">
-      <div class="overlay">🚀 Watch Full Showcase on YouTube</div>
-    </a>
+  <div class="page">
+    <h1>Assassin and the Lost Treasure</h1>
 
-    <div class="grid">
-            <div class="image-card reveal" style="background-image:url('../images/im1.png');"><div class="badge">View 1</div></div>
-      <div class="image-card reveal" style="background-image:url('../images/im2.png');"><div class="badge">View 2</div></div>
-      <div class="image-card reveal" style="background-image:url('../images/im3.png');"><div class="badge">View 3</div></div>
-      <div class="image-card reveal" style="background-image:url('../images/go.png');"><div class="badge">View 4</div></div>
-      <div class="image-card reveal" style="background-image:url('../images/v.png');"><div class="badge">View 5</div></div>
-    </div>
-
-    <a href="https://github.com/maddie240803/assassin-and-the-lost-treasure-game-project" target="_blank" class="source-link reveal">
-      🔗 View Project Source
+    <a href="https://www.youtube.com/watch?v=nDB9thNq4ig" target="_blank" class="hero"
+       style="background-image:url('./images/m1.png');">
+      <div class="overlay">🎮 Watch Assassin Trailer on YouTube</div>
     </a>
-  </div>
+
+    <div class="grid">
+      <div class="image-card" style="background-image:url('./images/im1.png');">
+        <div class="badge">View 1</div>
+      </div>
+      <div class="image-card" style="background-image:url('./images/im2.png');">
+        <div class="badge">View 2</div>
+      </div>
+      <div class="image-card" style="background-image:url('./images/im3.png');">
+        <div class="badge">View 3</div>
+      </div>
+      <div class="image-card" style="background-image:url('./images/go.png');">
+        <div class="badge">View 4</div>
+      </div>
+      <div class="image-card" style="background-image:url('./images/v.png');">
+        <div class="badge">View 5</div>
+      </div>
+    </div>
+  </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Set up the Intersection Observer
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          // If the element is in the viewport
-          if (entry.isIntersecting) {
-            // Add the 'is-visible' class to trigger the CSS transition
-            entry.target.classList.add('is-visible');
-            // Stop observing the element so the animation doesn't re-run
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1 // Trigger when 10% of the element is visible
+    // Smooth scroll animation for image reveal
+    const cards = document.querySelectorAll('.image-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
+    }, { threshold: 0.2 });
 
-      // Find all elements with the 'reveal' class and start observing them
-      const elementsToReveal = document.querySelectorAll('.reveal');
-      elementsToReveal.forEach((el) => {
-        observer.observe(el);
-      });
+    cards.forEach(card => observer.observe(card));
+
+    // Parallax effect for hero
+    const hero = document.querySelector('.hero');
+    window.addEventListener('mousemove', e => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX - innerWidth / 2) / 50;
+      const y = (e.clientY - innerHeight / 2) / 50;
+      hero.style.transform = `translate(${x}px, ${y}px) scale(0.98)`;
+    });
+    window.addEventListener('mouseleave', () => {
+      hero.style.transform = 'translate(0,0) scale(0.95)';
     });
   </script>
-
 </body>
 </html>
