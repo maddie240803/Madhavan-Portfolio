@@ -15,7 +15,7 @@ body{
 .container{
   width:100%;
   min-height:100vh;
-  background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.5)), url(../images/U5.png) center/cover fixed;
+  background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.5)), url(../images/u5.png) center/cover fixed;
   display:flex; flex-direction:column;
 }
 
@@ -153,7 +153,7 @@ ul.navbar li a:hover {
 /* individual backgrounds */
 .section-1-img .img-2{ background:linear-gradient(rgba(0,0,0,.0),rgba(0,0,0,.10)),url(../images/g1.jpg) center/cover no-repeat; }
 .section-1-img .img-3{ background:linear-gradient(rgba(0,0,0,.0),rgba(0,0,0,.10)),url(../images/brave.png) center/cover no-repeat; }
-.section-1-img .img-4{ background:linear-gradient(rgba(0,0,0,.0),rgba(0,0,0,.10)),url(../images/warxone.jpg) center/cover no-repeat; }
+.section-1-img .img-4{ background:linear-gradient(rgba(0,0,0,.0),rgba(0,0,0,.10)),url(../images/assassin.png) center/cover no-repeat; }
 .section-1-img .img-5{ background:linear-gradient(rgba(0,0,0,.0),rgba(0,0,0,.10)),url(../images/craft.jpeg) center/cover no-repeat; }
 .section-1-img .img-6{ background:linear-gradient(rgba(0,0,0,.0),rgba(0,0,0,.10)),url(../images/fortnite.jpg) center/cover no-repeat; }
 
@@ -206,7 +206,7 @@ ul.navbar li a:hover {
 
 /* thumbnails */
 .gw-1{ background:url(../images/brave.png) center/cover no-repeat; }
-.gw-2{ background:url(../images/carrace.jpg) center/cover no-repeat; }
+.gw-2{ background:url(../images/sleepy.png) center/cover no-repeat; }
 .gw-3{ background:url(../images/assassin.png) center/cover no-repeat; }
 .gw-4{ background:url(../images/warxone.jpg) center/cover no-repeat; }
 .gw-5{ background:url(../images/wras.jpg) center/cover no-repeat; }
